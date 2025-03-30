@@ -1,0 +1,109 @@
+// colors
+$bg-color: #011435;
+$white-color: #e9f3fb;
+$blue-light-color: #3070f7;
+$blue-dark-color: #0752d4;
+$logo-color: #000;
+
+// mixins
+@mixin center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+
+@mixin pseudo($position: absolute, $content: "") {
+    content: $content;
+    position: $position;
+}
+
+@mixin square($width,$height,$background) {
+  width: $width;
+  height: $height;
+  background: $background;
+}
+
+html, body{
+  width: 100%;
+  height: 100%;
+}
+
+body{
+  background: $bg-color;
+  overflow: hidden;
+}
+
+.letter-m{
+  @include center;
+
+  .left{
+    @include center;
+    @include square(22vmin,14.1vmin,$blue-dark-color);
+    z-index: 2;
+    top: 18.4vmin;
+    left: -14.2vmin;
+    transform: rotate(90deg) skewX(27deg);
+    border-top-left-radius: 1vmin;
+
+    &:before{
+      @include pseudo;
+      @include square(30vmin,10.8vmin,$white-color);
+      top: 14.2vmin;
+      left: -13.6vmin;
+      transform: skewX(-46deg);
+    }    
+
+    &:after{
+      @include pseudo;
+      @include square(35.9vmin,10vmin,$white-color);
+      top: 7.5vmin;
+      left: -23.4vmin;
+      transform: rotate(136deg) skewX(46deg);
+    }
+  }
+
+  .right{
+    @include center;
+    @include square(22vmin,14.1vmin,$white-color);
+    top: 18.4vmin;
+    left: 14.2vmin;
+    transform: rotate(90deg) skewX(-27deg);
+
+    &:before{
+      @include pseudo;
+      @include square(30vmin,10.8vmin,$blue-dark-color);
+      top: -10.8vmin;
+      left: -13.5vmin;
+      transform: skewX(46deg);
+    }   
+
+    &:after{
+      @include pseudo;
+      @include square(36vmin,10vmin,$blue-dark-color);
+      top: -3.4vmin;
+      left: -23.4vmin;
+      transform: rotate(-136deg) skewX(-46deg);
+      border-top-right-radius: 0.95vmin;
+    }
+  }
+
+  .top{
+    @include center;
+    @include square(19.5vmin,34vmin,$blue-light-color);
+    top: -29.2vmin;
+    left: 12vmin;
+    transform: rotateX(56deg) rotateZ(46deg) rotateY(-5.5deg) skewX(-2deg) skewY(2deg);
+
+    &:before{
+      @include pseudo;
+      @include square(17.8vmin,35.2vmin,$blue-light-color);
+      top: 7.5vmin;
+      left: -10.4vmin;
+      transform: rotate(90deg);
+      border-bottom-right-radius: 2vmin;
+    }
+  }
+}
